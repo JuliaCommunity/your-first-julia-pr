@@ -1,0 +1,30 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+  schedule:
+    - cron: 11 */3 * * *
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate Website
+        run: |
+          mkdir public
+          cp style.css public/style.css
+          go run main.go -t ${{ secrets.GITHUB_TOKEN }} -o public/index.html
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@d3b77e62017a60cdf55ceffc6c263f1f357f4c1b # 2.1.2
+        with:
+          target_branch: gh-pages
+          build_dir: public
+          keep_history: true
+          jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
