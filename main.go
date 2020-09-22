@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	humanize "github.com/dustin/go-humanize"
 	"github.com/google/go-github/v32/github"
 	"golang.org/x/oauth2"
 	"html/template"
@@ -18,6 +19,7 @@ type RepoInfo struct {
 	IssueCount  int
 	Name        string
 	Description string
+	LastUpdated string
 }
 
 func now() string {
@@ -100,6 +102,7 @@ func main() {
 			IssueCount:  count,
 			Name:        res.GetFullName(),
 			Description: res.GetDescription(),
+			LastUpdated: humanize.Time(res.GetUpdatedAt().Time),
 		})
 	}
 

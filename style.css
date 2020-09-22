@@ -76,6 +76,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 3em;
 }
 
 .repo-buttons a {
@@ -90,20 +91,20 @@ body {
     text-decoration: none;
 }
 
-.repo-open-issues {
+.repo-button {
     display: flex;
     align-items: center;
     vertical-align: middle;
     font-size: 14px;
 }
 
-.repo-open-issues a {
+.repo-button a {
     font-family: sans-serif;
     display: block;
     height: 100%;
 }
 
-.repo-open-issues-count {
+.repo-button-text {
     padding-bottom: 5px;
     margin-left: 0.5em;
 }
