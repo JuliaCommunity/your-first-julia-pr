@@ -10,11 +10,13 @@ import (
 	"log"
 	"math"
 	"os"
+	"sort"
 	"strings"
 	"time"
 )
 
 type RepoInfo struct {
+	Repository  *github.Repository
 	URL         string
 	IssueCount  int
 	Name        string
@@ -98,6 +100,7 @@ func main() {
 		}
 
 		entries = append(entries, RepoInfo{
+			Repository:  res,
 			URL:         res.GetHTMLURL(),
 			IssueCount:  count,
 			Name:        res.GetFullName(),
@@ -105,6 +108,9 @@ func main() {
 			LastUpdated: humanize.Time(res.GetUpdatedAt().Time),
 		})
 	}
+
+	// Sort entries by time of last update
+	sort.SliceStable(entries, func(i, j int) bool { return entries[i].Repository.GetUpdatedAt().Time.After(entries[j].Repository.GetUpdatedAt().Time) })
 
 	// Render template
 	funcMap := template.FuncMap{"now": now}
