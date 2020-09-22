@@ -112,6 +112,14 @@ func main() {
 	// Sort entries by time of last update
 	sort.SliceStable(entries, func(i, j int) bool { return entries[i].Repository.GetUpdatedAt().Time.After(entries[j].Repository.GetUpdatedAt().Time) })
 
+	// Remove repos that haven't had any activity in the last 6 months
+	filteredEntries := []RepoInfo{}
+	for _, r := range entries {
+		if r.Repository.GetUpdatedAt().After(time.Date(2020, 4, 1,0,0,0,0,time.UTC)) {
+			filteredEntries = append(filteredEntries, r)
+		}
+	}
+
 	// Render template
 	funcMap := template.FuncMap{"now": now}
 	log.Println("Parsing template...")
@@ -121,7 +129,7 @@ func main() {
 	}
 
 	log.Println("Executing template...")
-	err = tpl.Execute(out, entries)
+	err = tpl.Execute(out, filteredEntries)
 	if err != nil {
 		log.Fatalf("Could not execute template: %v", err)
 	}
