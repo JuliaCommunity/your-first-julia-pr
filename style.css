@@ -76,7 +76,6 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3em;
 }
 
 .repo-buttons a {
@@ -96,6 +95,7 @@ a:hover {
     align-items: center;
     vertical-align: middle;
     font-size: 14px;
+    width: 50%;
 }
 
 .repo-button a {
