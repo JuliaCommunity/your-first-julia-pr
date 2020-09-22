@@ -54,21 +54,21 @@ body {
     margin-left: 1em;
 }
 
-.repo a {
+a {
     text-decoration: none;
     color: var(--julia-blue);
-    font-family: 'JuliaMono', monospace;
 }
 
-.repo a:visited {
+a:visited {
     color: var(--julia-purple);
 }
 
-.repo a:hover {
+a:hover {
     text-decoration: underline;
 }
 
 .repo-name h3 {
+    font-family: 'JuliaMono', monospace;
     font-size: 20px;
 }
 
