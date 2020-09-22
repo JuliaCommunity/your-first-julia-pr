@@ -10,13 +10,32 @@
     src: url('https://raw.githubusercontent.com/cormullion/juliamono/master/JuliaMono-Regular.ttf');
 }
 
+html {
+    height: 100%;
+    margin:  0px auto;
+    padding: 0px auto;
+}
+
 body {
+    height: 100%;
     background-color: #f2f2f2;
-    max-width: 720px;
-    margin: auto;
+    margin: 0px auto;
+    padding: 0px auto;
     line-height: 1.5;
     font-size: 16px;
     font-family: sans-serif;
+}
+
+#content {
+    background-color: white;
+    height: auto;
+    min-height: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    overflow: hidden;
 }
 
 #repo-container {
@@ -115,5 +134,10 @@ body {
 
 footer {
     margin-top: 3em;
+    padding-top: 1.5em;
     font-size: 14px;
+    
+    border-style: solid none none none;
+    border-color: black;
+    border-width: 1px;
 }
