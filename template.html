@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Your First Julia PR</title>
     <link rel="stylesheet" href="style.css">
+    <script src="feather.min.js"></script>
 </head>
 <body>
 
@@ -26,9 +27,16 @@
 <div id="repo-container">
 {{range .}}
     <div class="repo">
-        <h3><a target="_blank" rel="noopener" href="{{.URL}}">{{.Name}}</a></h3>
-        <h4>{{.Description}}</h4>
-        Open Issues: {{.IssueCount}} <a target="_blank" rel="noopener" href="{{.URL}}/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest">🔗</a>
+        <div class="repo-headers">
+            <div class="repo-name"><h3><a target="_blank" rel="noopener" href="{{.URL}}">{{.Name}}</a></h3></div>
+            <div class="repo-description"><p>{{.Description}}</p></div>
+        </div>
+        <div class="repo-buttons">
+            <div class="repo-open-issues">
+                <span><a target="_blank" rel="noopener" href="{{.URL}}/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest"><i data-feather="alert-circle"></i></a></span>
+                <span class="repo-open-issues-count"><a target="_blank" rel="noopener" href="{{.URL}}/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest">{{.IssueCount}} Hacktoberfest Issues</a></span>
+            </div>
+        </div>
     </div>
 {{end}}
 </div>
@@ -37,5 +45,9 @@
     <div id="last-updated">Last updated: {{now}}</div>
     <div id="privacy-policy">This website is hosted on <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages.</a> Refer to their <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/site-policy/github-privacy-statement#github-pages">Privacy Statement</a> to find out what information is being collected to operate this service. No further information is being collected.</div>
 </footer>
+
+<script>
+    feather.replace()
+</script>
 </body>
 </html>
