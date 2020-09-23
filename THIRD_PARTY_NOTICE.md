@@ -26,3 +26,7 @@ It's released under the following [licence](https://github.com/feathericons/feat
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
+
+## `background.jl`
+
+Algorithm based on <https://generativeartistry.com/tutorials/circle-packing/>

@@ -26,6 +26,19 @@ body {
     font-family: sans-serif;
 }
 
+#content:before {
+    background: url('background.svg') no-repeat;
+    background-size: cover;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 50%;
+    z-index: -1;
+}
+
 #content {
     background-color: white;
     height: auto;
