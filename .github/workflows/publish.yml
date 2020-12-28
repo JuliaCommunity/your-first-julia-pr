@@ -35,7 +35,7 @@ jobs:
           mv background.min.svg public/background.svg
 
       - name: Deploy to GitHub Pages
-        if: success()
+        if: github.ref == 'refs/heads/main'
         uses: crazy-max/ghaction-github-pages@d3b77e62017a60cdf55ceffc6c263f1f357f4c1b # 2.1.2
         with:
           target_branch: gh-pages
