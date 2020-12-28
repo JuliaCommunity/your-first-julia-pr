@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install accessibility CI tool
+        run: sudo npm install -g pa11y-ci
+
       - name: Generate Website
         run: |
           mkdir public
@@ -19,6 +22,9 @@ jobs:
           cp feather.min.js public/feather.min.js
           go run main.go -t ${{ secrets.GITHUB_TOKEN }} -o public/index.html
           cp background.min.svg public/background.svg
+
+      - name: Run accessibility checks
+        run: pa11y-ci
 
       - name: Create website archive for debugging
         run: tar --use-compress-program zstd -cf your-first-julia-pr.tar.zst public/
