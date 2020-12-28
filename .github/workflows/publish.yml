@@ -23,21 +23,21 @@ jobs:
           go run main.go -t ${{ secrets.GITHUB_TOKEN }} -o public/index.html
           cp background.min.svg public/background.svg
 
-      - name: Run accessibility checks
+      - name: Start Python server
+        id: start-server
         run: |
           # Server script based on https://gist.github.com/tdpreece/91c6b0305cc7a151e03f
           cd public
 
           # Start server
           python3 -m http.server 8000 &> /dev/null &
-          pid="$!"
-          sleep 3
-
-          # Run checks
-          pa11y-ci
-
-          # Kill server
-          kill "$pid"
+          echo "::set-output name=pid::$!"
+      
+      - name: Run accessibility checks
+        run: pa11y-ci
+      
+      - name: Kill Python server
+        run: kill "${{ steps.start-server.outputs.pid }}"
 
       - name: Create website archive for debugging
         run: tar --use-compress-program zstd -cf your-first-julia-pr.tar.zst public/
