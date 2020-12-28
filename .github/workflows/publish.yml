@@ -26,15 +26,13 @@ jobs:
       - name: Run accessibility checks
         run: |
           # Server script based on https://gist.github.com/tdpreece/91c6b0305cc7a151e03f
-          cd public
-
           # Start server
-          python3 -m http.server 8000 &> /dev/null &
+          python3 -m http.server 8000 -d public &> /dev/null &
           pid="$!"
           sleep 3
 
           # Run checks
-          pa11y-ci
+          pa11y-ci -c
 
           # Kill server
           kill "$pid"
