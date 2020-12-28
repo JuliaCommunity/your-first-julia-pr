@@ -30,7 +30,16 @@ jobs:
 
           # Optimise background
           svgo background.svg -o background.min.svg
-          mv background.min.svg public/background.svg
+          cp background.min.svg public/background.svg
+
+      - name: Create website archive for debugging
+        run: tar --use-compress-program zstd -cf your-first-julia-pr.tar.zst public/
+
+      - name: Upload website archive for debugging
+        uses: actions/upload-artifact@v2
+        with:
+          name: website
+          path: your-first-julia-pr.tar.zst
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
