@@ -13,6 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install dependencies
+        run: |
+          # SVG optimisation
+          sudo npm install -g svgo
+
       - name: Generate Website
         run: |
           mkdir public
@@ -23,7 +28,10 @@ jobs:
           # Background
           julia --project -e 'using Pkg; Pkg.instantiate()'
           julia --project background.jl
-          mv background.svg public/background.svg
+
+          # Optimise background
+          svgo background.svg -o background.min.svg
+          mv background.min.svg public/background.svg
 
       - name: Deploy to GitHub Pages
         if: success()
