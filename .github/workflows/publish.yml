@@ -32,7 +32,7 @@ jobs:
           sleep 3
 
           # Run checks
-          pa11y-ci -c
+          pa11y-ci
 
           # Kill server
           kill "$pid"
