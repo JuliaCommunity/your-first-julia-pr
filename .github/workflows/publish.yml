@@ -12,26 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          # Background generation
-          julia --project -e 'using Pkg; Pkg.instantiate()'
-
-          # SVG optimisation
-          sudo npm install -g svgo
-
       - name: Generate Website
         run: |
           mkdir public
           cp style.css public/style.css
           cp feather.min.js public/feather.min.js
           go run main.go -t ${{ secrets.GITHUB_TOKEN }} -o public/index.html
-
-          # Background
-          julia --project background.jl
-
-          # Optimise background
-          svgo background.svg -o background.min.svg
           cp background.min.svg public/background.svg
 
       - name: Create website archive for debugging
