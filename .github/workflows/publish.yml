@@ -14,6 +14,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Background generation
+          julia --project -e 'using Pkg; Pkg.instantiate()'
+
           # SVG optimisation
           sudo npm install -g svgo
 
@@ -25,7 +28,6 @@ jobs:
           go run main.go -t ${{ secrets.GITHUB_TOKEN }} -o public/index.html
 
           # Background
-          julia --project -e 'using Pkg; Pkg.instantiate()'
           julia --project background.jl
 
           # Optimise background
