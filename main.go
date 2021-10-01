@@ -115,7 +115,7 @@ func main() {
 	// Remove repos that haven't had any activity in the last 6 months
 	filteredEntries := []RepoInfo{}
 	for _, r := range entries {
-		if r.Repository.GetUpdatedAt().After(time.Date(2020, 4, 1,0,0,0,0,time.UTC)) {
+		if r.Repository.GetUpdatedAt().After(time.Date(2021, 4, 1, 0, 0, 0, 0, time.UTC)) {
 			filteredEntries = append(filteredEntries, r)
 		}
 	}
