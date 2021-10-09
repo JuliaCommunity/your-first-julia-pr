@@ -79,6 +79,31 @@ func main() {
 
 	repos := make(map[string]int)
 
+	// Manually add some repos that can't be found due to not having Julia as main language (e.g. docs repos)
+	repos["https://github.com/FluxML/fluxml.github.io"]++
+
+	//additionalRepos := [...]string{
+	//	"FluxML/fluxml.github.io",
+	//}
+	//for _, r := range additionalRepos {
+	//	log.Printf("Manually search %v for Hacktoberfest issues...", r)
+	//	searchString := fmt.Sprintf("is:issue is:open repo:%s label:hacktoberfest", r)
+	//	res, resp, err := client.Search.Issues(ctx, searchString, opts)
+	//	if err != nil {
+	//		log.Fatalf("Could not execute search: %v", err)
+	//	} else if resp.StatusCode != 200 {
+	//		log.Fatalf("Search failed: %v - %v", resp.StatusCode, resp.Status)
+	//	}
+	//
+	//	fmt.Println(res.Issues)
+	//
+	//	issues = append(issues, res.Issues...)
+	//	if resp.NextPage == 0 {
+	//		break
+	//	}
+	//	opts.Page = resp.NextPage
+	//}
+
 	for _, issue := range issues {
 		repos[issue.GetRepositoryURL()]++
 	}
