@@ -1,0 +1,157 @@
+:root {
+    --julia-blue:   #4063D8;
+    --julia-red:    #CB3C33;
+    --julia-green:  #389826;
+    --julia-purple: #9558B2;
+}
+
+@font-face {
+    font-family: 'JuliaMono';
+    src: url('https://raw.githubusercontent.com/cormullion/juliamono/master/webfonts/JuliaMono-Regular.woff2');
+}
+
+html {
+    height: 100%;
+    margin:  0 auto;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: black;
+    margin: 0 auto;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#content:before {
+    background: url('background.svg') no-repeat;
+    background-size: cover;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 50%;
+    z-index: -1;
+}
+
+#content {
+    background-color: white;
+    height: auto;
+    min-height: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    overflow: hidden;
+}
+
+#repo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.repo {
+    display: flex;
+    flex-direction: column;
+    border-style: none none solid none;
+    border-color: black;
+    border-width: 1px;
+    padding-bottom: 1em;
+    max-width: 75%;
+    margin-left: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--julia-blue);
+}
+
+a:visited {
+    color: var(--julia-purple);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.repo-name h3 {
+    font-family: 'JuliaMono', monospace;
+    font-size: 20px;
+}
+
+.repo-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.repo-buttons a {
+    color: black;
+}
+
+.repo-buttons a:visited {
+    color: black;
+}
+
+.repo-buttons a:hover {
+    text-decoration: none;
+}
+
+.repo-button {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 14px;
+    width: 50%;
+}
+
+.repo-button a {
+    font-family: sans-serif;
+    display: block;
+    height: 100%;
+}
+
+.repo-button-text {
+    padding-bottom: 5px;
+    margin-left: 0.5em;
+}
+
+#gh-search-fallback {
+    padding-top: 2em;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+#gh-search-fallback a {
+    text-decoration: none;
+}
+
+#gh-search-fallback a:visited {
+    color: var(--julia-blue);
+}
+
+#gh-search-fallback a:hover {
+    text-decoration: underline;
+}
+
+#gh-search-fallback-text {
+    padding-bottom: 5px;
+    margin-left: 0.5em;
+}
+
+footer {
+    margin-top: 3em;
+    padding-top: 1.5em;
+    font-size: 14px;
+    
+    border-style: solid none none none;
+    border-color: black;
+    border-width: 1px;
+}
